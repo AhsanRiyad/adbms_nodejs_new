@@ -61,7 +61,7 @@ app.get('/' , (req,res)=>{
 		console.log(sql);
 
 
-		db.getResult(sql , function(results){
+		db.execute(sql , function(results){
 			console.log(results);
 
 		});
