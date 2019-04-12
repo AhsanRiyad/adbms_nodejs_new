@@ -51,9 +51,34 @@ app.use('/lib/css', express.static( __dirname + '/lib/css/'));
 
 
 
-
-
 //ROUTES
+
+
+app.get('*' , (req, res, next)=>{
+
+	if(req.session.email){
+
+		obj.userinfo = req.session.userinfo;
+		console.log(obj.userinfo[0].u_id);
+		productModel.cart_count(obj.userinfo[0].u_id , function(result){
+			console.log('cart count result');
+			console.log(result[0].cart_count);
+			obj.cart_count = result[0].cart_count;
+		});
+		obj.loginStatus = true;
+
+		}else{
+		obj.loginStatus = false;
+		}
+
+
+		next();
+
+	
+});
+
+
+
 app.get('/' , (req,res)=>{
 
 	var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
@@ -69,9 +94,6 @@ app.get('/' , (req,res)=>{
 		}
 	});
 
-
-
-
 	productModel.getAllProduct(function(result){
 		obj.justInProduct = result.rows;
 		//console.log(result);
@@ -81,7 +103,6 @@ app.get('/' , (req,res)=>{
 		console.log(obj);
 		res.render('index' , obj);
 	});
-
 
 
 }
