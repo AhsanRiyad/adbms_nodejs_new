@@ -1,0 +1,64 @@
+<% include ../headerDashboard %>
+<% include ../dashboard/dashboardheader %>
+
+
+
+<div class="row">
+	<div class="col-7 offset-3" style="margin-top: 100px;">
+		<h1 class="text-secondary text-center">Promo List</h1>
+	<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Desc</th>
+      <th scope="col">Percentage</th>
+      <th scope="col">Limit</th>
+      <th scope="col">Delete</th>
+      <th scope="col">Update</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+
+	<% for(var i=0; i< promoArray.length; i++) {%>	
+
+    <tr>
+      <th scope="row"> <%= promoArray[i].promo_id %> </th>
+      <td> <%= promoArray[i].promo_desc %> </td>
+      <td> <%= promoArray[i].promo_percentage %>% </td>
+      <td><%= promoArray[i].promo_limit %></td>
+      <td> 
+        <form action="http://localhost:3000/product/deletepromo" method="post"> 
+        
+        <input type="text" name="promoIdDelete" hidden="true" value="<%= promoArray[i].promo_id %>">
+
+        <input type="submit" value="Delete" class="btn btn-danger">
+
+      </form>
+      </td>
+      
+
+      <td> 
+
+        <a class="btn btn-primary" href="http://localhost:3000/product/updatepromo/<%=promoArray[i].promo_id%>">Update</a>
+
+    </td>
+
+    </tr>
+    
+    <%}%>
+
+
+  </tbody>
+</table>
+
+
+	</div>
+</div>
+
+
+
+
+
+
+<% include ../footerDashboard %>

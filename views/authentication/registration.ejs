@@ -1,0 +1,319 @@
+<% include ../header %>
+
+
+<!-- registration page starts now -->
+<form action="#" method="post">
+	<div class="container-fluid">
+		<div class="row justify-content-xl-center admin_background">
+			<div class="col-12 col-xl-6 ">
+				<div class="container">
+					<div class="row pt-4 pb-1">
+
+
+						<%
+						if(msg=='Welcome, Create your Umart Account'){
+						%>
+						
+						<p class="text-dark  h4" id='msg'>
+							Welcome, Create your Umart Account
+						</p>		
+
+						<%}%>
+
+						<%
+						if(msg=='Invalid email [server]'){
+						%>
+						
+						<p class="text-success  h4" id='msg'>
+							'Invalid email [server]'
+						</p>		
+
+						<%}%>
+
+
+						<%
+						if(msg=='invalid'){
+						%>
+						
+						<p class="text-success  h4" id='msg'>
+							'Invalid email [server]'
+						</p>		
+
+						<%}%>
+
+
+						<%
+						if(msg=='Invalid'){
+						%>
+						
+						<p class="text-success  h4" id='msg'>
+							'Invalid email [server]'
+						</p>		
+
+						<%}%>
+
+
+						<%
+						if(msg=='email already registered'){
+						%>
+						
+						<p class="text-success  h4" id='msg'>
+							Email already used
+						</p>		
+
+						<%}%>
+
+
+
+						<%
+						if(msg=='success'){
+						%>
+						
+						<p class="text-success  h4" id='msg'>
+							Reg successful
+						</p>		
+
+						<%}%>
+
+
+						
+						<%
+						if(msg=='null value'){
+						%>
+						
+						<p class="text-success  h4" id='msg'>
+							Null value detected
+						</p>		
+
+						<%}%>
+
+						
+						<span class="ml-auto mt-auto pt-3"><small >Alredy member? <a href="http://localhost:3000/auth">Login</a> here</small></span>
+					</div>
+
+					<div class="row justify-content-xl-center bg-white py-5 mb-5">
+
+						<!-- email input -->
+						<div class="col-12 col-xl-6 ">
+							<div class="form-group">
+								<label > 
+
+						<% if(msg=='invalid'){ %>
+						
+						<small id="idExampleInputEmail1Small" style="color: red;"> Invalid Email [server]</small>
+
+						<%}else
+						{%>
+						<small id="idExampleInputEmail1Small" style="color: black;">Email*</small>
+						
+						<%}%>
+
+
+
+	
+
+									<br>
+
+
+								</label>
+
+
+								<input name="email" type="text" class="form-control rounded-0" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" value="">
+							</div>
+							<!-- password input -->
+							<div class="form-group">
+								<label for="exampleInputPassword1"><small id='idexampleInputPassword1'>Password*</small>
+									<br>
+								</label>
+								<input name="password" type="password" class="form-control rounded-0" id="exampleInputPassword1" placeholder="Password" value="">
+							</div>
+
+							<!-- re-enter password input -->
+							<div class="form-group mb-4">
+								<label for="exampleInputPassword1"><small>Re-enter password*</small></label>
+								<input name="confirm_password" type="password" class="form-control rounded-0" id="exampleInputPassword2" placeholder="Password" value="" >
+							</div>
+
+							<!-- month input -->
+							<div class="row">
+								<div class="col-3 pr-0">
+									<small>
+									DOB
+									</small>
+
+									<div class="input-group">
+										<select name="month" class="custom-select rounded-0" id="inputGroupSelect01">
+
+											<option>Month</option>
+											<option >01</option>
+											<option>02</option>
+											<option >03</option>
+											<option>04</option>
+											<option >05</option>
+											<option >06</option>
+											<option >07</option>
+											<option >08</option>
+											<option >09</option>
+											<option >10</option>
+											<option  >11</option>
+											<option  >12</option>
+										</select>
+									</div>
+								</div>
+
+								<!-- day input -->
+								<div class="col-3 px-0">
+									<small>&nbsp</small>
+									<br>
+
+									<div class="input-group">
+										<select name="day" class="custom-select rounded-0 " id="inputGroupSelect01">
+											<option>Day</option>
+											<option >1</option>
+											<option  >2</option>
+											<option  >3</option>
+											<option  >4</option>
+											<option  >5</option>
+											<option  >6</option>
+											<option >7</option>
+											<option >8</option>
+											<option >9</option>
+											<option >10</option>
+											<option >11</option>
+											<option  >12</option>
+											<option  >13</option>
+											<option  >14</option>
+											<option  >15</option>
+											<option  >16</option>
+											<option >17</option>
+											<option >18</option>
+											<option >19</option>
+											<option >20</option>
+										</select>
+
+
+
+									</select>
+								</div>
+							</div>
+
+							<!-- yeas input -->
+							<div class="col-3 pl-0 pr-2">
+								<small>&nbsp</small>
+								<div class="input-group">
+									<select name="year" class="custom-select rounded-0" id="inputGroupSelect01">
+										<option>Year</option>
+										<option  >2008</option>
+										<option  >2007</option>
+										<option >2006</option>
+										<option  >2005</option>
+										<option  >2004</option>
+										<option>2003</option>
+										<option  >2002</option>
+									</select>
+								</div>
+							</div>
+
+							<!-- gender input -->
+							<div class="col-3 pl-1">
+								<small>User Type</small>
+								
+								
+
+								<div class="input-group">
+									<select name="user_type" class="custom-select rounded-0 pl-1 pl-lg-2 " id="inputGroupSelect01">
+										<option  value="type">Type</option>
+										<option  value="admin">Admin</option>
+										<option 
+										
+										value="user">User</option>
+									
+									</select>
+								</div>
+							</div>
+
+
+						</div>
+
+					</div>
+
+					<!-- first name input -->
+					<div class="col-12 col-xl-5 ">
+
+						<div class="form-group">
+							<label for="exampleInputEmail1"><small id="fnLabel">First Name*</small>
+								<br>
+								
+								
+							</label>
+							<input name="first_name"  type="text" class="form-control rounded-0" id="fnInput" aria-describedby="emailHelp" placeholder="Enter first name" value="">
+						</div>
+
+						<!-- last name input -->
+						<div class="form-group">
+							<label for="exampleInputEmail1"><small id="lnLabel">Last Name*</small>
+								<br>
+								
+
+							</label>
+							<input name="last_name"  type="text" class="form-control rounded-0" id="lnInput" aria-describedby="emailHelp" placeholder="Enter Last name" value="">
+						</div>
+						
+						<!-- mobile number input -->
+						<div class="form-group mb-xl-3">
+							<label for="exampleInputEmail1"><small id="exampleLabelMobile">Mobile Number*</small>
+								<br>
+								
+							</label>
+							
+							<input name="phone" type="text" class="form-control rounded-0" id="exampleInputMobile" aria-describedby="emailHelp" placeholder="Enter mobile number"
+							value="">
+						</div>
+
+						<!-- toc terms and condition input -->
+						<div class="custom-control custom-checkbox my-1 mr-sm-2 my-0 py-0">
+
+							
+							<input name="toc" value="yes" type="checkbox" class="custom-control-input" id="customControlInline"
+							
+							>
+							<label class="custom-control-label" for="customControlInline"> 
+
+
+						<% if(checkbox=='invalid'){ %>
+						
+						<small id="idExampleInputEmail1Small" style="color: red;"> You must agree with the TOC [server]</small>
+
+						<%}else
+						{%>
+						<small id="idExampleInputEmail1Small" style="color: black;">Yes, I agree with TOC</small>
+						
+						<%}%>
+
+
+							</label>
+							
+						</div>
+						
+						<!-- submit button -->
+						<button type="submit" name="submit" value="submit" class="btn btn-success rounded-0 w-100 py-2 mt-3 mt-xl-1">Register</button>
+
+
+						
+							<!-- <p class="text-danger h5 mt-4"><i>Already have an account?</i></p>
+
+								<a href="reg.php"><button type="button" class="btn btn-primary rounded-0 w-100 py-2">Register Here</button></a> -->
+
+							</div>
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+
+
+
+<% include ../footer %>

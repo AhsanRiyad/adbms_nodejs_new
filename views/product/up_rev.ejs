@@ -1,0 +1,62 @@
+<% include ../headerDashboard %>
+<% include ../dashboard/dashboardheader %>
+
+
+<div class="row">
+	<div class="col-7 offset-3" style="margin-top: 100px;">
+		<h1 class="text-secondary text-center">user List</h1>
+	<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Reviews</th>
+      <th scope="col">Date</th>
+      <th scope="col">User Id</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+
+	<% for(var i=0; i< allReviews.length; i++) {%>	
+
+    <tr>
+      <th scope="row"> <%=i+1%> </th>
+      <td> <%=allReviews[i].review_text%> </td>
+      <td> <%=allReviews[i].review_date%>  </td>
+      <td> <%=allReviews[i].user_id%>  </td>
+      <td> 
+
+      	<form method="POST" action="http://localhost:3000/product/up_rev/<%=allReviews[i].product_id%>">
+
+      	<input type="text" name="rev_id" hidden="true" value="<%=allReviews[i].review_id%>">
+
+        <input type="submit" class="btn btn-primary" name="submit">
+
+        </form>
+
+       </td>
+      
+      
+      
+
+      
+
+    </tr>
+    
+    <%}%>
+
+
+  </tbody>
+</table>
+
+
+	</div>
+</div>
+
+
+
+
+
+
+<% include ../footerDashboard %>

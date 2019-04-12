@@ -1,0 +1,74 @@
+<% include ../headerDashboard %>
+<% include ../dashboard/dashboardheader %>
+
+
+
+
+<form class="classFormAddProductBySeller" method='post' action='#'>
+	<h1 align="center" class="text-success">Update Promo Code</h1>
+		
+		
+
+		<%
+		if(msg=='null')
+		{%>
+		
+		<h1 align="center" class="text-danger"> Null Submission </h1>
+		<%}
+		
+		else if(msg=='added')
+		{%>
+		
+		<h1 align="center" class="text-success"> Promo Updated Successfully </h1>
+		
+		<%}
+		else if(msg=='')
+		{%>
+		
+		<h1 align="center" class="text-success"> </h1>
+		
+		<%}
+		else if (msg == 'db'){%>
+		<h1 align="center" class="text-danger"> DB problem </h1>
+
+		<%}%>
+
+		<h1 class="text-white text-center "> <span class="bg-dark">For Promo id: <%=promoid%></span>  </h1>
+		<table width="500px" align="center">
+			
+
+			<tr>
+				
+				<td width="100px"><b>promo_desc</b></td>
+				<td width="350px"><input type="text" name="promo_desc"></td>
+			</tr>
+			<tr>
+				<td><b>Promo_expiry</b></td>
+				<td><input type="date" name="Promo_expiry"></td>
+			</tr>
+			<tr>
+				<td><b>promo_percentage</b></td>
+				<td><input type="number" name="promo_percentage"></td>
+			</tr>
+			<tr>
+				<td><b>promo_maxCount</b></td>
+				<td><input type="number" name="promo_status"></td>
+			</tr>
+			<tr>
+				<td><b>promo_limit</b></td>
+				<td><input type="text" name="promo_limit"></td>
+			</tr>
+			<tr>
+				<td><b>promot_use_count</b></td>
+				<td><input type="text" name="promo_use_count"></td>
+			</tr>
+			<tr>
+				<td colspan="2"><input align="center" class="btn btn-success " type="submit" name="submit" value="Submit"></td>
+			</tr>
+		</table>
+	</form>
+
+
+
+
+	<% include ../footerDashboard %>

@@ -1,0 +1,115 @@
+<% include ../header %>
+
+
+
+
+
+<div class="container">
+	
+	
+
+	<%
+	if(products.length < 1){%>
+
+	<div class="jumbotron jumbotron-fluid mt-4 bg-info text-white">
+  <div class="container">
+    <h1 class="display-4">Your cart is empty</h1>
+    <p class="lead">Please add some product to the cart and come here again</p>
+  </div>
+</div>
+
+
+	<%
+}else{%>
+
+
+<table class="table">
+	<thead class="thead-dark">
+		<tr>
+			<th scope="col">#</th>
+
+			<th scope="col">Name</th>
+			<th scope="col">Short Description</th>
+			<th scope="col">Quantity</th>
+			<th scope="col">Price</th>
+		</tr>
+	</thead>
+	<tbody>
+
+
+
+
+
+
+
+		<%
+		for(var i = 0 ; i<products.length; i++){
+		%>
+
+
+
+
+		<tr>
+
+			<th scope="row"><%= i+1 %></th>				
+
+			<td><%=products[i].product_name%></td>
+			<td>php echo $row['descripition']; </td>
+			<td><%=products[i].product_qntity%> </td>
+			<td><%=products[i].product_price%></td>
+
+		</tr>
+
+
+		<%
+	}
+	%>
+
+	<tr>
+		<th scope="row"></th>
+		<td></td>
+		<td></td>
+		<td>Total Amount:</td>
+		<td> <%=total%></td>
+
+
+	</tr>
+
+
+
+</tbody>
+</table>
+
+<hr>
+
+
+
+
+
+<a href="http://localhost:3000/order/confirm" class="text-dark btn btn-warning">Confirm Order</a>
+
+
+<%
+}
+%>
+
+
+
+
+
+
+
+<hr>
+
+
+
+
+
+
+<a href="http://localhost:3000" class="btn btn-info mt-1">Continue Shopping</a>
+
+
+</div>
+
+
+<% include ../footer %>

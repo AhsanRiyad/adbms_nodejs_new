@@ -1,0 +1,68 @@
+<% include ../headerDashboard %>
+<% include ../dashboard/dashboardheader %>
+
+
+
+
+
+<div class="row">
+	<div class="col-7 offset-3" style="margin-top: 100px;">
+		<h1 class="text-secondary text-center">user List</h1>
+	<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Product ID</th>
+      <th scope="col">Product Name</th>
+      <th scope="col">View Reviews</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+
+	<% for(var i=0; i< allProducts.length; i++) {%>	
+
+    <tr>
+      <th scope="row"> <%=i+1%> </th>
+      <td> <%=allProducts[i].product_id%> </td>
+      <td> <%=allProducts[i].product_name%>  </td>
+      <td> 
+        <a class="btn btn-primary" href="http://localhost:3000/product/up_rev/<%=allProducts[i].product_id%>">View Review</a>
+       </td>
+      
+      <!-- <td> 
+        <form action="http://localhost:3000/user/deleteuser" method="post"> 
+        
+       <input type="text" name="userIdDelete" hidden="true" value="">
+
+        <input type="submit" value="Delete" class="btn btn-danger">
+
+      </form> -->
+      <!-- </td> -->
+      
+
+      
+
+    </tr>
+    
+    <%}%>
+
+
+  </tbody>
+</table>
+
+
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<% include ../footerDashboard %>

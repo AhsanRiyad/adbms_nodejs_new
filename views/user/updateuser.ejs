@@ -1,0 +1,91 @@
+<% include ../headerDashboard %>
+<% include ../dashboard/dashboardheader %>
+
+
+
+
+<form class="classFormAddProductBySeller" method='post' action='#'>
+	<h1 align="center" class="text-primary">Update User</h1>
+		
+		<h1 align="center"><span class="bg-dark text-white">Update for user id: <%=userid%></span></h1>
+
+		<%
+		if(msg=='null')
+		{%>
+		
+		<h1 align="center" class="text-danger"> Null Submission </h1>
+		<%}
+		
+		else if(msg=='added')
+		{%>
+		
+		<h1 align="center" class="text-success"> User Updated </h1>
+		
+		<%}
+		else if (msg == 'db'){%>
+		<h1 align="center" class="text-danger"> DB problem </h1>
+
+		<%}
+		else if (msg == 'none'){%>
+		<h1 align="center" class="text-danger">  </h1>
+
+		<%}%>
+			
+
+		
+		<table width="500px" align="center">
+			
+	
+			<tr>
+				
+				<td width="100px"><b>user_name</b></td>
+				<td width="350px"><input type="text" name="user_name"></td>
+			</tr>
+			<tr>
+				<td><b>user_password</b></td>
+				<td><input type="text" name="user_password"></td>
+			</tr>
+			<tr>
+				<td><b>user_email</b></td>
+				<td><input type="text" name="user_email"></td>
+			</tr>
+			<tr>
+				<td><b>user_mobile</b></td>
+				<td><input type="text" name="user_mobile"></td>
+			</tr>
+			<tr>
+				<td><b>user_type</b></td>
+				<td>
+					<select name="user_type" id="">
+						<option value="user">
+							user
+						</option>	
+						<option value="admin">
+							admin
+						</option>	
+					</select>
+			</td>
+			</tr>
+			<tr>
+				<td><b>user_status</b></td>
+				<td>
+					<select name="user_status" id="">
+						<option value="valid">
+							valid
+						</option>
+						<option value="invalid">
+							invalid
+						</option>		
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2"><input align="center" class="btn btn-success " type="submit" name="submit" value="Submit"></td>
+			</tr>
+		</table>
+	</form>
+
+
+
+
+	<% include ../footerDashboard %>

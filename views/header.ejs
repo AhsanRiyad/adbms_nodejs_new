@@ -1,0 +1,300 @@
+
+<%
+var logoSrc = "http://localhost:3000/lib/img/logo.png";
+var homepage = 'http://localhost:3000';
+var signup = "http://localhost:3000/auth/reg";
+var signin = "http://localhost:3000/auth";
+var dashboard = "http://localhost:3000/dashboard";
+var signout = "http://localhost:3000/auth/logout";
+%>
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title><%=title%></title>
+	<link rel="icon" href="http://localhost:3000/lib/img/fevicon.png" type="image/gif" sizes="16x16">
+
+	<link rel="stylesheet" type="text/css" href="http://localhost:3000/lib/css/bootstrap.min.css">
+	
+
+	<link rel="stylesheet" type="text/css" href="http://localhost:3000/lib/css/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" href="http://localhost:3000/lib/css/jquery-ui.theme.css">
+	<link rel="stylesheet" type="text/css" href="http://localhost:3000/lib/css/jquery-ui.structure.css">
+	
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+	<link rel="stylesheet" type="text/css" href="http://localhost:3000/lib/css/style.css">
+
+
+
+	
+  <body>
+
+
+
+    <div class="container-fluid bg-light">
+      <div class="row">
+        <div class="col">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-2 col-12 justify-content-lg-start d-flex justify-content-center"><a href="<%=homepage%>"><img src=<%=logoSrc%> ></a>
+              </div>
+
+              <div class="col-lg-6 col-12 align-self-lg-center">
+
+                <form action="http://localhost:3000/product/search" method="GET">
+
+
+
+                  <div class="form-row align-items-center">
+                    <div class="col-9">
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text"><i class="fas fa-search"></i>
+
+
+                          </div>
+                        </div>
+
+
+                        <input type="text" class="form-control" id="autosearch" placeholder="Search" name="searchbox">
+
+
+                        <div class="input-group mt-2">
+                          <div class="input-group-prepend">
+                            <label class="input-group-text" for="idcategory">Categories</label>
+                          </div>
+                          <select class="custom-select" id="idcategory" name="catValue">
+                            <option selected value="all">All</option>
+                            <option value="monitor">Monitor</option>
+                            <option value="hdd">Hard Disk</option>
+                            <option value="motherboard">Motherboard</option>
+                            <option value="ram">Ram</option>
+                            <option value="processor">Processor</option>
+                            <option value="printer">Printer</option>
+                          </select>
+                        </div>
+
+                      </div>
+                    </div>
+
+                    <div class="col-3">
+                      <button type="submit" class="btn btn-primary py-4 " name="submit">Search</button>
+
+
+
+                    </div>
+                  </div>
+
+
+
+                </form> 
+
+
+
+
+              </div>
+              <div class="col-lg-1  col-3 offset-1 mt-3 mb-3 mb-lg-0 mt-lg-0 offset-lg-0 d-flex justify-content-center align-self-lg-center">
+
+                <%
+                if(loginStatus==false){ 
+                %>
+
+                <a href="<%=signup%>" class="btn btn-success px-4">Sign Up </span>
+                </a> 
+
+                <%
+              }
+              else if(loginStatus==true){ 
+              %>
+
+              <a href="http://localhost:3000/product/cart" class="btn btn-warning ">Cart<span class="badge badge-light" id="cart_count"> <%=cart_count%> </span>
+              </a> 
+
+              
+              <%
+            }
+            %>
+
+
+
+
+          </div>
+
+          <div class=" col-lg-2 col-xl-1 col-3 mt-3 mb-3 mb-lg-0 mt-lg-0 d-flex justify-content-center align-self-lg-center">
+
+
+
+
+
+            <%
+            if(loginStatus==false){ 
+            %>
+
+            <a href="http://localhost:3000/product/cart" class="btn btn-warning ">Support</span>
+            </a> 
+
+            <%
+          }
+          else if(loginStatus==true){ 
+          %>
+
+          <a href="<%=dashboard%>" class="btn btn-info">Dashboard</a>
+
+
+          <%
+        }
+        %>
+
+
+      </div>
+
+
+
+
+
+
+      <div class=" col-lg-1 col-3 mt-3 mb-3 mb-lg-0 mt-lg-0 d-flex justify-content-center align-self-lg-center">
+
+
+
+
+
+
+
+        <%
+        if(loginStatus==false){ 
+        %>
+
+        <a href="<%=signin%>" class="btn btn-danger px-4">
+          Sign In
+
+        </a>
+
+        <%
+      }
+      else if(loginStatus==true){ 
+      %>
+
+      <a href="http://localhost:3000/auth/logout" class="btn btn-danger">
+        SignOut
+
+      </a>
+
+
+      <%
+    }
+    %>
+
+
+
+
+
+  </div>
+
+
+
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="row bg-light border">
+  <div class="col-6 offset-3">
+    <nav class="navbar navbar-expand-lg navbar-light ">
+
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+
+         <a class="navbar-brand text-danger" href="#">Categories</a>
+         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-primary" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Monitor
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="http://localhost:3000/product/category/monitor/lg">LG</a>
+            <a class="dropdown-item" href="http://localhost:3000/product/category/monitor/samsung">Samsung</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="http://localhost:3000/product/category/monitor/walton">Walton</a>
+          </div>
+        </li>
+
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-primary" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Hard Disk
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="http://localhost:3000/product/category/hdd/toshiba">Toshiba</a>
+            <a class="dropdown-item" href="http://localhost:3000/product/category/hdd/western_digital">Western Digital</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="http://localhost:3000/product/category/hdd/adata">Adata</a>
+          </div>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-primary" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Printer
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="http://localhost:3000/product/category/printer/canon">Canon</a>
+            <a class="dropdown-item" href="http://localhost:3000/product/category/hp">HP</a>
+          </div>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-primary" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            RAM
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="http://localhost:3000/product/category/ram/transcend">Transcend</a>
+            <a class="dropdown-item" href="http://localhost:3000/product/category/ram/adata">Adata</a>
+            <a class="dropdown-item" href="http://localhost:3000/product/category/ram/razor">Razor</a>
+
+          </div>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-primary" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Motherboard
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="http://localhost:3000/product/category/motherboard/gigabyte">GigaByte</a>
+            <a class="dropdown-item" href="http://localhost:3000/product/category/motherboard/asus">Asus</a>
+            <a class="dropdown-item" href="http://localhost:3000/product/category/motherboard/intel">Intel</a>
+
+          </div>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-primary" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Processor
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="http://localhost:3000/product/category/processor/intel">Intel</a>
+            <a class="dropdown-item" href="http://localhost:3000/product/category/processor/amd">AMD</a>
+
+
+          </div>
+        </li>
+
+
+      </ul>
+
+    </div>
+  </nav>
+</div>
+</div>
+
+
+

@@ -1,0 +1,106 @@
+<% include ../header %>
+
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="col-6">
+			<img class="img-fluid" src="http://localhost:3000/lib/img/product_demo.png" alt="">
+			<hr>
+			<h3>Name: <%=product.product_name%></h3>
+			<h4>Price: <%=product.product_price%> </h4>	
+			<h4>Description: <%=product.descriptions%> </h4>	
+
+			<b>Quantity:  </b>
+			<select class="px-4" name="productQuantity" id="productQuantity">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+			</select>
+
+			<div>
+
+
+				<%
+				if(loginStatus==false){ 
+				%>
+
+				<button disabled class="btn btn-warning mt-2"> Please login to buy or Post a Review</button>
+				<%
+			}
+			else if(loginStatus==true){ 
+			%>
+
+			<input type="text" hidden="true"  value="<%=product.product_id%>" id="productId">
+			
+			<input type="text" hidden="true"  value="<%=user_id_P%>" id="user_id">
+
+
+
+			<a onclick="jsFuntionAddToCart(this)" href="#" class="btn btn-warning mb-3 mt-2" id="addToCart">Add to Cart</a>
+
+			<!-- <a onclick="jsFuntionAddToCart(this)" href="#" class="btn btn-success mb-3 mt-2" >Buy now</a> -->
+
+
+
+
+			<div class="jumbotron jumbotron-fluid">
+				<div class="container">
+					<h1 class="display-6">Reviews</h1>
+					
+					<%
+					for(var i = 0 ; i<reviews.length ; i++)
+					{
+					%>
+					
+
+
+					<hr>
+					<p class="lead">
+						<%= reviews[i].review_text %>
+
+					</p>
+					<hr>
+
+					<%
+					}
+					%>
+
+
+
+				</div>
+			</div>
+
+			<form method="POST" action="http://localhost:3000/product/review">
+
+				<div class="form-group">
+					<input type="text" hidden="true" value="<%=pid%>" name="productid"> 
+					<input type="text" hidden="true" value="<%=user_id_P%>" name="uid"> 
+					<label for="exampleFormControlTextarea1" class=""> Add a Review </label>
+					<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="rev_text"></textarea>
+					<input type="submit" value="Post Review" name="submit" class="btn btn-success mt-2">
+				</div>
+			</form>
+
+
+
+			<%
+		}
+		%>
+
+
+
+
+
+
+
+
+
+
+	</div>
+</div>
+</div>
+</div>
+
+
+
+<% include ../footer %>
