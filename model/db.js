@@ -29,6 +29,17 @@ var config = {
 	return connection;
 }*/
 
+function doRelease(connection) {
+  connection.close(
+    function(err) {
+      if (err) {
+        console.error(err.message);
+      }
+    });
+}
+
+
+
 function getConnection(){
 	oracledb.getConnection( 
 
@@ -69,64 +80,33 @@ function getConnection(){
 
 
 module.exports ={
-execute: function(obj , callback){
-
-
+execute: function(sql , callback){
 
 oracledb.getConnection(
-  {
-    user          : 'scott',
-    password      : 'tiger',
-    connectString : 'localhost:1521/xe'
-  },
+  config,
   function(err, connection) {
     if (err) {
       console.error(err.message);
       return;
     }
-
- 
-    var sql = "select * from emp"; 
     connection.execute(
-      // The statement to execute
+    
       sql,
-
-      // The "bind value" 180 for the bind variable ":id"
-      // [180],
-
-      // execute() options argument.  Since the query only returns one
-      // row, we can optimize memory usage by reducing the default
-      // maxRows value.  For the complete list of other options see
-      // the documentation.
-      // { maxRows: 1
-        //, outFormat: oracledb.OBJECT  // query result format
-        //, extendedMetaData: true      // get extra metadata
-        //, fetchArraySize: 100         // internal buffer allocation size for tuning
-      // },
-
-      // The callback function handles the SQL execution results
+   
       function(err, result) {
         if (err) {
           console.error(err.message);
           doRelease(connection);
           callback([]);
         }
-        //console.log(result.metaData); // [ { name: 'DEPARTMENT_ID' }, { name: 'DEPARTMENT_NAME' } ]
-        console.log(result.rows);     // [ [ 180, 'Construction' ] ]
+        
+        console.log(result.rows);    
         doRelease(connection);
         callback(result.rows);
       });
   });
 
 // Note: connections should always be released when not needed
-function doRelease(connection) {
-  connection.close(
-    function(err) {
-      if (err) {
-        console.error(err.message);
-      }
-    });
-}
 
 
 
