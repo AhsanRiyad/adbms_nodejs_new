@@ -7,6 +7,8 @@ var config = {
     connectString : 'localhost:1521/xe'
 }
 
+
+
 function doRelease(connection) {
   connection.close(
     function(err) {
@@ -16,9 +18,8 @@ function doRelease(connection) {
     });
 }
 
-
 module.exports ={
-getResult: function(sql , callback){
+getResult: function(sql , params,  callback){
 
 oracledb.getConnection(
   config,
@@ -30,7 +31,7 @@ oracledb.getConnection(
     connection.execute(
     
       sql,
-      {},
+      params,
       { outFormat: oracledb.OBJECT },
       function(err, result) {
         if (err) {
@@ -41,7 +42,8 @@ oracledb.getConnection(
         
         console.log(result.rows);   
         doRelease(connection);
-        callback(result.rows);
+        // callback(result.rows);
+        callback(result);
       });
   });
 
