@@ -52,8 +52,6 @@ app.use('/lib/css', express.static( __dirname + '/lib/css/'));
 
 
 //ROUTES
-
-
 app.get('*' , (req, res, next)=>{
 
 	if(req.session.email){
@@ -70,11 +68,8 @@ app.get('*' , (req, res, next)=>{
 		}else{
 		obj.loginStatus = false;
 		}
-
-
 		next();
 
-	
 });
 
 

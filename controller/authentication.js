@@ -15,6 +15,25 @@ var obj = {
 		
 }
 
+
+function sessionCheck(req, res, next){
+
+	// session
+	if(req.session.email){
+		obj.loginStatus = true;
+		}else{
+		obj.loginStatus = false;
+		}
+		console.log('middleware');
+		next();
+
+}
+
+//middleware
+router.use(sessionCheck);
+
+
+
 var reg = ['/reg']
 
 router.get('/logout' , function(req, res){
@@ -39,12 +58,7 @@ router.post('/' , function(req, res){
 		email: req.body.email,
 		password: req.body.password
 	};
-	// session
-	if(req.session.email){
-		obj.loginStatus = true;
-		}else{
-		obj.loginStatus = false;
-		}
+
 	
 	userModel.validate(user , function(result){
 		if(result.length<1){
