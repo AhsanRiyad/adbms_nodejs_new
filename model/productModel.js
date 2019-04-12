@@ -37,7 +37,8 @@ module.exports={
 	},
 	getAllProduct: function(callback){
 		sql = "select * from products";
-		db.getResult(sql , callback);
+		var params = {} ; 
+		db.getResult(sql , params,  callback);
 	},
 	searchProduct: function(searchDetails , callback){
 		console.log('product model '+ searchDetails.searchText);
@@ -104,10 +105,16 @@ module.exports={
 
 	},
 	getRecommendedProduct : function(ip , callback){
-		var sql = "SELECT p.* FROM visit v INNER JOIN products p ON p.product_id=v.product_id where v.user_ip = '"+ip+"'";
+		//var sql = "SELECT p.* FROM visit v INNER JOIN products p ON p.product_id=v.product_id where v.user_ip = '"+ip+"'";
+
+
+		var sql = "SELECT p.* FROM visit v  , products p where p.product_id=v.product_id and v.user_ip = :ip" ; 
+
+		var params = { ip: ip }
 
 		console.log(sql);
-		db.getResult(sql, callback);
+		console.log(ip);
+		db.getResult(sql, params , callback);
 
 	},
 	addToCart: function(info , callback){

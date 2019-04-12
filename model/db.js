@@ -2,8 +2,8 @@
 var oracledb = require('oracledb');
 
 var config = {
-	user          : 'scott',
-    password      : 'tiger' ,
+	user          : 'riyad',
+    password      : '448787' ,
     connectString : 'localhost:1521/xe'
 }
 
@@ -32,7 +32,8 @@ oracledb.getConnection(
     
       sql,
       params,
-      { outFormat: oracledb.OBJECT },
+      { outFormat: oracledb.OBJECT }, 
+      
       function(err, result) {
         if (err) {
           console.error(err.message);
@@ -40,17 +41,19 @@ oracledb.getConnection(
           callback([]);
         }
         
-        console.log(result.rows);   
-        doRelease(connection);
+        //console.log(result.rows);   
+        
         // callback(result.rows);
         callback(result);
+        doRelease(connection);
       });
   });
 
 },
 
-execute: function(sql , callback){
 
+
+execute: function(sql , callback){
 oracledb.getConnection(
   config,
   function(err, connection) {
@@ -77,10 +80,4 @@ oracledb.getConnection(
 }
 
 }
-
-
-
-
-
-
 

@@ -10,13 +10,12 @@ var authentication = require.main.require('./controller/authentication');
 var user = require.main.require('./controller/user');
 var order = require.main.require('./controller/order');
 
-var oracledb = require('oracledb');
-
-var db = require.main.require('./model/db');
-
 
 var app = express();
 var port = 3000;
+
+var db = require.main.require('./model/db');
+var orcledb = require('oracledb');
 
 var authenticationArray = ['/auth'];
 
@@ -57,32 +56,29 @@ app.use('/lib/css', express.static( __dirname + '/lib/css/'));
 //ROUTES
 app.get('/' , (req,res)=>{
 
+	var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+
+	productModel.getRecommendedProduct(ip , function(result){
+
+		if(result.rows.length<1){
+			console.log('recommended not found');
+		}else{
+			console.log('recommended block');
+			//console.log(result.rows.length);
+			console.log(result.rows);
+			title.RecommendedProduct = result.rows;
+		}
 
 
-	
-
-	var sql = `
-      begin
-       p1(:a , :b);
-      end;` ; 
-
-      var params = {
-      a: 20,
-      b:  { type: oracledb.NUMBER, dir: oracledb.BIND_OUT }
-
-      }
-
-		console.log(sql);
+	});
 
 
-		db.getResult(sql , params , function(results){
-			console.log(results);
-			console.log(results.outBinds);
-
-
-		});
 
 	
+
+
+
+
 }
 );
 
