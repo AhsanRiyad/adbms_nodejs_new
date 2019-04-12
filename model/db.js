@@ -30,7 +30,8 @@ oracledb.getConnection(
     connection.execute(
     
       sql,
-   
+      {},
+      { outFormat: oracledb.OBJECT },
       function(err, result) {
         if (err) {
           console.error(err.message);
@@ -38,14 +39,13 @@ oracledb.getConnection(
           callback([]);
         }
         
-        console.log(result.rows);    
+        console.log(result.rows);   
         doRelease(connection);
         callback(result.rows);
       });
   });
 
 },
-
 
 execute: function(sql , callback){
 
@@ -72,7 +72,6 @@ oracledb.getConnection(
         callback(status);
       });
   });
-
 }
 
 }
