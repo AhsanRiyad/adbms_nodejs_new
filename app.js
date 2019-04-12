@@ -20,7 +20,7 @@ var orcledb = require('oracledb');
 var authenticationArray = ['/auth'];
 
 
-var title = {
+var obj = {
 	title: 'index', 
 	justInProduct: [] , 
 	RecommendedProduct : [] , 
@@ -59,23 +59,28 @@ app.get('/' , (req,res)=>{
 	var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
 
 	productModel.getRecommendedProduct(ip , function(result){
-
 		if(result.rows.length<1){
-			console.log('recommended not found');
+			//console.log('recommended not found');
 		}else{
-			console.log('recommended block');
+			//console.log('recommended block');
 			//console.log(result.rows.length);
-			console.log(result.rows);
-			title.RecommendedProduct = result.rows;
+			//console.log(result.rows);
+			obj.RecommendedProduct = result.rows;
 		}
-
-
 	});
 
 
 
-	
 
+	productModel.getAllProduct(function(result){
+		obj.justInProduct = result.rows;
+		//console.log(result);
+
+		
+		obj.loginStatus = false;
+		console.log(obj);
+		res.render('index' , obj);
+	});
 
 
 
