@@ -36,28 +36,7 @@
 		</div>
 	</div>
 </div>
-<!-- carousel ends -->
 
-
-<!-- <% for(var i=0 ; i<justInProduct.length; i++){%>
-
-<h1><%= justInProduct[i].product_id %></h1>
-
-
-<%}%>
- -->
-
-<h1>hi</h1>
-<%= justInProduct.length %>
-<%= justInProduct[0].PRODUCT_ID %>
-<h1>hi</h1>
-
-
-<!-- categories starts -->
-
-<!--product category added -->
-
-<!-- categories ends -->
 
 
 
@@ -66,7 +45,163 @@
 
 <!-- just in products starts -->
 
+<!--New product category added -->
+<div class="container-fluid">
+	<div class="row bg-light">
+		<div class="col">
+			<div class="container">
+				<div class="row pt-5">
+					<a class="text-dark" href="#"><h3>Featured Products</h3></a>
+					<div class="w-100"></div>
 
+
+					<% 
+					for(var i=0; i<justInProduct.length; i++)
+					{
+					%>
+
+
+					<div class="col-xl-2 col-6  mt-xl-2 mt-3" >
+						
+	<a style="color: black;" href="http://localhost:3000/product/productdetails/<%=justInProduct[i].product_id%>">
+						<div class="w_p bg-white ">
+							<img class="img-fluid" src="lib/img/cat1.jpg" alt="">
+
+							<div class="w-100 pl-2">
+								<h6> <%=justInProduct[i].PRODUCT_NAME%> </h6>
+								<h6 class="text-danger">$<%=justInProduct[i].PRODUCT_PRICE%></h6>
+								<p class="text-danger mb-0"> 
+									<strike class="text-muted">$<%=justInProduct[i].PRODUCT_ORIGINAL_PRICE%>
+									</strike>
+									<small class="text-muted"> $<%=justInProduct[i].CATEGORY_ID%>%</small>
+								</p>
+								<div class="w-100 mt-0 pb-3">
+									
+									<span class="fa fa-star text-warning"></span>
+									<span class="fa fa-star text-warning"></span>
+									<span class="fa fa-star text-warning"></span>
+									<span class="fa fa-star text-warning"></span>
+									<span class="fa fa-star"></span>
+									
+								</div>
+								
+
+							</div>
+
+						</div>
+
+</a>
+
+						
+					</div>
+
+
+
+					<% 
+					}
+					%>
+
+
+						
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+<!-- just in products ends -->
+
+
+
+
+
+
+<!--Recommended product category added -->
+
+<!--New product category added -->
+<div class="container-fluid">
+	<div class="row bg-light">
+		<div class="col">
+			<div class="container">
+				<div class="row pt-5">
+					<a class="text-dark" href="#"><h3>Recommended for you</h3></a>
+					<div class="w-100"></div>
+
+
+					<% 
+					for(var i=0; i<RecommendedProduct.length; i++)
+					{
+					%>
+
+
+					<div class="col-xl-2 col-6  mt-xl-2 mt-3" >
+						
+	<a style="color: black;" href="http://localhost:3000/product/productdetails/<%=RecommendedProduct[i].product_id%>">
+						<div class="w_p bg-white ">
+							<img class="img-fluid" src="lib/img/cat1.jpg" alt="">
+
+							<div class="w-100 pl-2">
+								<h6> <%=RecommendedProduct[i].PRODUCT_NAME%> </h6>
+								<h6 class="text-danger">$<%=RecommendedProduct[i].PRODUCT_PRICE%></h6>
+								<p class="text-danger mb-0"> 
+									<strike class="text-muted">$<%=RecommendedProduct[i].PRODUCT_ORIGINAL_PRICE%>
+									</strike>
+									<small class="text-muted"> $<%=RecommendedProduct[i].CATEGORY_ID%>%</small>
+								</p>
+								<div class="w-100 mt-0 pb-3">
+									
+									<span class="fa fa-star text-warning"></span>
+									<span class="fa fa-star text-warning"></span>
+									<span class="fa fa-star text-warning"></span>
+									<span class="fa fa-star text-warning"></span>
+									<span class="fa fa-star"></span>
+									
+								</div>
+								
+
+							</div>
+
+						</div>
+
+						</a>
+
+						
+					</div>
+
+
+
+					<% 
+					}
+					%>
+
+
+						
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+<!-- just in products ends -->
+
+
+
+<!-- load more button -->
+<div class="col-12 d-flex justify-content-center mb-2 mt-4">
+	<button class="w-25 bg-transparent py-2 border border-info text-info btn rounded-0">
+		LOAD MORE
+	</button>				
+</div>
+
+<div class="w-100 mb-3">
+	<hr>
+</div>
 
 
 <% include footer %>
