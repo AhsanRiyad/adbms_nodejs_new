@@ -1,0 +1,35 @@
+sqlplus "/as sysdba"
+
+
+alter session set "_ORACLE_SCRIPT"=true; 
+
+
+create user scott identified by tiger;
+grant connect, resource, unlimited tablespace to scott;
+ALTER USER SCOTT DEFAULT TABLESPACE USERS;
+ALTER USER SCOTT TEMPORARY TABLESPACE TEMP;
+
+
+alter session set "_ORACLE_SCRIPT"=true; 
+
+//if the created user can not login
+grant create session to THE_USER;
+
+
+
+GRANT CONNECT TO THE_USER;
+
+GRANT CONNECT, RESOURCE, DBA TO THE_USER;
+
+GRANT UNLIMITED TABLESPACE TO THE_USER;
+
+
+
+SQLPlus> connect sys as sysdba
+SQLPlus> alter pluggable database all open; 
+
+grant all privileges to user_name;
+
+
+
+ALTER USER user_name IDENTIFIED BY new_password;

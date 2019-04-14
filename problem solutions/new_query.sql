@@ -7,6 +7,18 @@ drop table products;
 
 drop table visit;
 
+drop table cart;
+
+drop table categories;
+
+drop table give_review;
+
+drop table order_includ_product;
+
+drop table promo;
+
+drop table review;
+
 
 ##################################################
 
@@ -96,5 +108,83 @@ INSERT INTO visit (product_id, user_id, user_ip, hit_count, counter) VALUES
 
 
 #################################################################
+
+
+CREATE TABLE cart (
+  cart_id number(5) NOT NULL,
+  cart_status varchar2(50) NOT NULL,
+  user_id number(5) NOT NULL,
+  g_u_type varchar2(20) NOT NULL,
+  order_id number(5) NOT NULL,
+  product_id number(5) NOT NULL,
+  quantity number(5) NOT NULL
+)
+
+
+
+#################################################################
+
+
+
+CREATE TABLE categories (
+  category_id number(5) NOT NULL,
+  category_name varchar2(50) NOT NULL
+)
+
+
+
+#################################################################
+
+
+CREATE TABLE give_review (
+  review_id number(5) NOT NULL,
+  user_id number(5) NOT NULL,
+  seller_id number(5) NOT NULL
+)
+
+
+#################################################################
+
+
+CREATE TABLE order_includ_product (
+  order_id number(8) NOT NULL,
+  product_id number(8) NOT NULL,
+  qntity number(8) NOT NULL,
+  counter number(8) NOT NULL
+)
+
+
+
+#################################################################
+
+
+CREATE TABLE promo (
+  promo_id number(5) NOT NULL,
+  promo_desc varchar2(50) NOT NULL,
+  Promo_expiry date NOT NULL,
+  promo_percentage number(20) NOT NULL,
+  promo_status varchar2(50) NOT NULL,
+  promo_limit number(5) NOT NULL,
+  promo_use_count number(5) NOT NULL,
+  a_id number(5) NOT NULL
+)
+
+
+#################################################################
+
+
+CREATE TABLE review (
+  review_id number(5) NOT NULL,
+  review_text varchar(50) NOT NULL,
+  review_status varchar(50) NOT NULL,
+  review_date date NOT NULL,
+  product_id number(5) NOT NULL,
+  user_id number(8) NOT NULL
+)
+
+
+#################################################################
+
+
 
 
