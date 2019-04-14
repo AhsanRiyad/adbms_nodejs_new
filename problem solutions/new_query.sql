@@ -1,5 +1,5 @@
 
-#####################################################
+-- drop table
 
 drop table user_table;
 
@@ -20,7 +20,11 @@ drop table promo;
 drop table review;
 
 
-##################################################
+-- user table
+
+
+
+
 
 create table user_table
 (
@@ -42,7 +46,7 @@ constraint  g_user_pk primary key(u_id)
 insert into user_table (u_id, u_password, u_address, u_email, u_mobile, dob, u_status, first_name, last_name , u_type) values('1', '12' , 'tangail' , 'riyad298@gmail.com' , '01919448787' , (TO_DATE('2003/05/03', 'yyyy/mm/dd')) , 'valid' , 'Aiyad' , 'Riyad' , 'admin');
 
 
-#####################################################################
+-- products
 
 CREATE TABLE products (
   product_id number(5) NOT NULL,
@@ -90,7 +94,7 @@ sub_category) VALUES
 
 
 
-################################################################
+-- visit
 
 
 CREATE TABLE visit (
@@ -107,7 +111,7 @@ INSERT INTO visit (product_id, user_id, user_ip, hit_count, counter) VALUES
 
 
 
-#################################################################
+-- cart
 
 
 CREATE TABLE cart (
@@ -122,7 +126,7 @@ CREATE TABLE cart (
 
 
 
-#################################################################
+-- categories
 
 
 
@@ -133,7 +137,7 @@ CREATE TABLE categories (
 
 
 
-#################################################################
+-- give_review
 
 
 CREATE TABLE give_review (
@@ -143,7 +147,7 @@ CREATE TABLE give_review (
 )
 
 
-#################################################################
+-- order_includ_product
 
 
 CREATE TABLE order_includ_product (
@@ -155,7 +159,7 @@ CREATE TABLE order_includ_product (
 
 
 
-#################################################################
+-- promo
 
 
 CREATE TABLE promo (
@@ -170,7 +174,7 @@ CREATE TABLE promo (
 )
 
 
-#################################################################
+-- review
 
 
 CREATE TABLE review (
@@ -183,7 +187,7 @@ CREATE TABLE review (
 )
 
 
-#################################################################
+
 
 
 
