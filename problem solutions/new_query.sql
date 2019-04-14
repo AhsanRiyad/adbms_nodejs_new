@@ -99,10 +99,10 @@ sub_category) VALUES
 
 CREATE TABLE visit (
   product_id number(5) NOT NULL,
-  user_id number(5) NOT NULL,
+  user_id number(5) ,
   user_ip varchar2(50) NOT NULL,
-  hit_count number(5) NOT NULL,
-  counter number(8) NOT NULL
+  hit_count number(5) ,
+  counter number(8) 
 ) ;
 
 

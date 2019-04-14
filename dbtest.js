@@ -63,6 +63,11 @@ app.use('/lib/css', express.static( __dirname + '/lib/css/'));
     console.log(results);
  
 });
+
+  db.getResult('select * from products' , { } , function(results){
+    console.log(results);
+ 
+});
   /*productModel.getRecommendedProduct('::1' , function(result){
 
     console.log(result);

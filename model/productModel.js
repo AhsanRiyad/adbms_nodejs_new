@@ -109,9 +109,10 @@ module.exports={
 
 		console.log(sql);
 		var params = { 
-			pid: ip.productid , 
-			ip: ip.ip 
+			pid: { val: ip.productid }  , 
+			ip: { val: ip.ip }
 		};
+		console.log(params);
 
 		db.execute(sql , params ,  callback);
 

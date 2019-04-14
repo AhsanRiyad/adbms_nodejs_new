@@ -53,7 +53,7 @@ oracledb.getConnection(
 
 
 
-execute: function(sql , callback){
+execute: function(sql , params , callback){
 oracledb.getConnection(
   config,
   function(err, connection) {
@@ -64,6 +64,7 @@ oracledb.getConnection(
     connection.execute(
     
       sql,
+      params,
    
       function(err, status) {
         if (err) {

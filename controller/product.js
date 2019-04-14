@@ -386,7 +386,26 @@ router.get('/productdetails/:pid' , function(req, res){
 	productModel.recommendProduct(visitTable , function(result){
 
 
+		if(result.rows.length<1){
+			console.log('ip not found');
+			console.log(result);
+			var visitTable = {
+				ip: ip,
+				productid : pid
+			}
 
+
+			productModel.insertIp(visitTable , function(status){
+				if(status){
+					console.log('ip added');
+				}
+				else{
+					console.log('ip not added');
+				}
+			});
+
+
+		}
 
 		console.log(result);
 
