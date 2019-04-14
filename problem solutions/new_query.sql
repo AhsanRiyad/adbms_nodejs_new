@@ -59,7 +59,7 @@ CREATE TABLE products (
   descriptions varchar2(100) NOT NULL,
   category_name varchar2(50) NOT NULL,
   sub_category varchar2(50) NOT NULL
-) 
+) ;
 
 
 
@@ -103,7 +103,7 @@ CREATE TABLE visit (
   user_ip varchar2(50) NOT NULL,
   hit_count number(5) NOT NULL,
   counter number(8) NOT NULL
-) 
+) ;
 
 
 INSERT INTO visit (product_id, user_id, user_ip, hit_count, counter) VALUES
@@ -122,7 +122,7 @@ CREATE TABLE cart (
   order_id number(5) NOT NULL,
   product_id number(5) NOT NULL,
   quantity number(5) NOT NULL
-)
+);
 
 
 
@@ -133,7 +133,7 @@ CREATE TABLE cart (
 CREATE TABLE categories (
   category_id number(5) NOT NULL,
   category_name varchar2(50) NOT NULL
-)
+);
 
 
 
@@ -144,7 +144,7 @@ CREATE TABLE give_review (
   review_id number(5) NOT NULL,
   user_id number(5) NOT NULL,
   seller_id number(5) NOT NULL
-)
+);
 
 
 -- order_includ_product
@@ -155,7 +155,7 @@ CREATE TABLE order_includ_product (
   product_id number(8) NOT NULL,
   qntity number(8) NOT NULL,
   counter number(8) NOT NULL
-)
+);
 
 
 
@@ -171,7 +171,7 @@ CREATE TABLE promo (
   promo_limit number(5) NOT NULL,
   promo_use_count number(5) NOT NULL,
   a_id number(5) NOT NULL
-)
+);
 
 
 -- review
@@ -184,7 +184,13 @@ CREATE TABLE review (
   review_date date NOT NULL,
   product_id number(5) NOT NULL,
   user_id number(8) NOT NULL
-)
+);
+
+
+
+
+
+commit;
 
 
 

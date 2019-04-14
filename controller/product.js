@@ -14,6 +14,18 @@ var obj = {
 }
 
 
+// middleware
+function sessionCheck(req , res , next){
+	if(req.session.email){
+		obj.loginStatus = true;
+		}else{
+		obj.loginStatus = false;
+		}
+		next();
+}
+
+router.use(sessionCheck);
+
 
 router.get('/autosearch/:id/:cat' , function(req, res){
 
@@ -316,32 +328,24 @@ router.get('/cart' , function(req, res){
 });
 
 
+// product details starts
+
 router.get('/productdetails/:pid' , function(req, res){
 
 	
 	var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
 
 	// session
-	if(req.session.email){
-		obj.loginStatus = true;
-		}else{
-		obj.loginStatus = false;
-		}
-
-
-
-
-
-
+	
 	var pid = req.params.pid;
 	productModel.getProductDetails(pid , function(result){
-		console.log(result);
-		obj.product = result[0];
+		console.log(result.rows);
+		obj.product = result.rows[0];
 		// console.log(result[0].product_name);
 		// console.log(obj);
 		obj.user_id_P = '';
 
-		console.log(obj.product.product_name);	
+		console.log(obj.product.PRODUCT_NAME);	
 		if(req.session.userinfo){
 			obj.user_id = req.session.userinfo;
 			console.log(obj.user_id[0].u_id);
@@ -351,28 +355,26 @@ router.get('/productdetails/:pid' , function(req, res){
 		
 		obj.pid = pid ; 
 
+
+
 		productModel.getReview(pid , function(result){
 			console.log('get review controller');
 			
-			console.log(result);
+			console.log(result.rows);
 			console.log(result.length);
 			//console.log(result[0].review_text);
-			obj.reviews = result;
+			obj.reviews = result.rows;
 
-			res.render('product/productdetails' , obj);	
+			//res.render('product/productdetails' , obj);	
 				console.log(obj);
 			
 
 
 		});
 
-		
-		
-
-		
-
 	})
 	
+
 	console.log(req.headers);
 	console.log(ip);
 
@@ -380,34 +382,17 @@ router.get('/productdetails/:pid' , function(req, res){
 				ip: ip,
 				productid : pid
 			}
+
 	productModel.recommendProduct(visitTable , function(result){
 
-		if(result.length<1){
-			console.log('ip not found');
-			console.log(result);
-			var visitTable = {
-				ip: ip,
-				productid : pid
-			}
-
-			productModel.insertIp(visitTable , function(status){
-				if(status){
-					console.log('ip added');
-
-				}
-				else{
-					console.log('ip not added');
-				}
-			});
-
-		}else{
-			console.log('ip found');
-		}
 
 
-	});
-	
 
+		console.log(result);
+
+
+
+	});	
 
 	/*console.log(pid);
 	console.log(obj);
@@ -420,6 +405,8 @@ router.get('/productdetails/:pid' , function(req, res){
 	
 
 });
+
+// product details ends
 
 
 

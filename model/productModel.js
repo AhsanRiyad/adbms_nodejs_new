@@ -87,21 +87,33 @@ module.exports={
 	},
 	getProductDetails: function(productid, callback){
 		console.log(productid);
-		var sql = "select * from products where product_id = "+productid+"";
+		var sql = "select * from products where product_id = :pid";
 		console.log(sql);
-		db.getResult(sql, callback);	
+		db.getResult(sql, { pid: productid } , callback);	
 	},
 	recommendProduct: function(visitTable , callback){
-		var sql = "select * from visit where product_id="+visitTable.productid+" and user_ip='"+visitTable.ip+"'";
+		var sql = "select * from visit where product_id=:pid and user_ip=:ip";
+
+		
+
+		var params = { 
+			pid :  visitTable.productid , 
+			ip: visitTable.ip
+		} ;
+
 		console.log(sql);
-		db.getResult(sql, callback);
+		db.getResult(sql , params ,  callback);
 	},
 	insertIp: function(ip , callback){
-		var sql = "INSERT INTO `visit`(`product_id`,`user_ip`) VALUES ("+ip.productid+" , '"+ip.ip+"')";
+		var sql = "INSERT INTO visit(product_id,user_ip) VALUES (:pid , :ip)";
 
 		console.log(sql);
+		var params = { 
+			pid: ip.productid , 
+			ip: ip.ip 
+		};
 
-		db.execute(sql , callback);
+		db.execute(sql , params ,  callback);
 
 	},
 	getRecommendedProduct : function(ip , callback){
@@ -152,9 +164,9 @@ module.exports={
 
 	},
 	getReview: function(pid , callback){
-		var sql = "SELECT `review_id`, `review_text`, `review_status`, `review_date`, `product_id`, `user_id` FROM `review` WHERE product_id ="+pid+" ";
+		var sql = "SELECT review_id, review_text, review_status, review_date, product_id, user_id FROM review WHERE product_id =:pid ";
 
-		db.getResult(sql , callback);
+		db.getResult(sql , {pid : pid} ,  callback);
 
 		console.log(sql);
 	},
