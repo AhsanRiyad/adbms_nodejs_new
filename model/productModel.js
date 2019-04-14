@@ -112,6 +112,7 @@ module.exports={
 			pid: { val: ip.productid }  , 
 			ip: { val: ip.ip }
 		};
+		//params = ['3' , ip.ip];
 		console.log(params);
 
 		db.execute(sql , params ,  callback);

@@ -59,12 +59,15 @@ app.use('/lib/css', express.static( __dirname + '/lib/css/'));
   //var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
 
   
-  db.getResult('select * from products' , { } , function(results){
-    console.log(results);
+  //db.getResult('select * from products' , { } , function(results){
+    //console.log(results);
  
-});
+//});
+sql = "INSERT INTO visit(product_id,user_ip) VALUES (:pid , :ip )";
 
-  db.getResult('select * from products' , { } , function(results){
+params = [ '3' , '::1']
+
+db.execute(sql , params , function(results){
     console.log(results);
  
 });

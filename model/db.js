@@ -65,6 +65,7 @@ oracledb.getConnection(
     
       sql,
       params,
+      { autoCommit: true },
    
       function(err, status) {
         if (err) {
